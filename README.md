@@ -51,3 +51,34 @@ Run the docker
 ```
 docker run -it -p 9696:9696 mileage-predictor:latest
 ```
+Install EBS CLI for AWS EBS using pipenv
+```
+pipenv install awsebcli --dev
+```
+
+Check EB version
+```
+pipenv shell
+eb --version
+```
+
+Run initialization command
+```
+eb init -p docker mileage-predictor
+```
+
+Change the DEFAULT REGION on configure.yml
+
+Test the abblication locally
+```
+eb local run --port 9696
+
+python test.py
+{'predicted_mpg': 15.256814714536844}
+```
+Deploy to AWS
+```
+eb create mileage-predictor-env
+```
+## Deploying Mileage Predictor using AWS EBS
+![using-aws-ebs](https://user-images.githubusercontent.com/13174586/214431889-9c4933ce-2060-452a-b86c-06841a884100.png)
